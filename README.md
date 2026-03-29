@@ -24,7 +24,7 @@ Original concept preserved:
 - ESP32-S3
 - TT DC Geared Motor
 - L298N Motor Driver
-- 2x SG90 Servo Motors
+- SG90 Servo Motors
 
 ### Additional Required Components
 - Jumper wires (male-to-male, male-to-female)
