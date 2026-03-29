@@ -156,9 +156,6 @@ Ensure servo positions align with physical compartments accurately.
 ---
 
 
-
----
-
 ## Team Members
 
 | Team Member | Role | Main Contribution |
