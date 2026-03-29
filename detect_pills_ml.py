@@ -29,7 +29,7 @@ while True:
     
     for cnt in contours:
         ((x, y), radius) = cv2.minEnclosingCircle(cnt)
-        if 10 < radius < 100:
+        if 10 < radius < 500:
             # Create mask and get average color
             mask = np.zeros(frame.shape[:2], dtype="uint8")
             cv2.drawContours(mask, [cnt], -1, 255, -1)
