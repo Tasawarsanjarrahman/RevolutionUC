@@ -1,4 +1,4 @@
-﻿# RevolutionUC
+﻿# Happy Granny
 ## Overview
 The Smart Pill Dispenser is an automated medication management device designed specifically for elderly users. It helps organize, classify, and distribute pills accurately according to a predefined schedule, reducing the risk of missed or incorrect medication intake.
 
