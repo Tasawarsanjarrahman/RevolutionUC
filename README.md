@@ -1,4 +1,4 @@
-﻿# RevolutionUC Hardware Project
+﻿# Happy Granny
 
 ## Overview
 This project is a hardware-based pill dispensing system built with an ESP32-S3 microcontroller. The system integrates Bluetooth communication, servo motors, and a DC motor to automate pill dispensing after scanning through a mobile application.
