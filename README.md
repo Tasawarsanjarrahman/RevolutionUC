@@ -39,7 +39,6 @@ Original concept preserved:
 | Component | ESP32 Pin | Status |
 | --- | --- | --- |
 | Servo 1 (active in firmware) | GPIO 10 | Used in current code |
-| Servo 2 (optional expansion) | GPIO 19 | Reserved/example |
 | Motor IN1 | GPIO 5 | Used in current code |
 | Motor IN2 | GPIO 4 | Used in current code |
 | ENA (PWM, optional speed control) | GPIO 9 | Optional wiring |
