@@ -1,39 +1,116 @@
-﻿# Happy Granny
+﻿# RevolutionUC Hardware Project
+
 ## Overview
-The Smart Pill Dispenser is an automated medication management device designed specifically for elderly users. It helps organize, classify, and distribute pills accurately according to a predefined schedule, reducing the risk of missed or incorrect medication intake.
+This project is a hardware-based pill dispensing system built with an ESP32-S3 microcontroller. The system integrates Bluetooth communication, servo motors, and a DC motor to automate pill dispensing after scanning through a mobile application.
+
+Original concept preserved:
+- Scan pill using mobile app
+- Send data via Bluetooth (BLE)
+- ESP32 processes command
+- Servo positions dispensing arm
+- Motor moves pill into output
 
 ---
 
-## Product Type
-**Smart Medication Dispensing Device for Elderly**
+## System Architecture
+`Mobile App -> BLE -> ESP32 -> Servo Control -> Motor Driver -> Pill Dispensing`
 
 ---
 
-## Product Description
-The system consists of a conveyor mechanism powered by a TT DC geared motor and controlled by an ESP32-S3 microcontroller. Mechanical arms (pushers), driven by SG90 servo motors, are used to direct pills into designated compartments.
+## Components (Bill of Materials)
 
-- Microcontroller: ESP32-S3  
-- Actuation System: TT DC gear motor + L298N motor driver  
-- Sorting Mechanism: 2 arms powered by SG90 servos  
-- Connectivity: Bluetooth communication with a mobile device  
+### Core Components
+- ESP32-S3
+- TT DC Geared Motor
+- L298N Motor Driver
+- 2x SG90 Servo Motors
+
+### Additional Required Components
+- Jumper wires (male-to-male, male-to-female)
+- Breadboard or PCB
+- External power supply (recommended: 7V-12V for motor driver)
+- 5V regulated supply for ESP32 and servos
+- USB cable for programming ESP32
 
 ---
 
-## Electronic Components
-- 1 × TT DC Gear Motor  
-- 1 × L298N Motor Driver  
-- 1 × ESP32-S3  
-- 2 × SG90 Servo Motors  
+## Pin Mapping (Current Firmware + Expansion Example)
+
+| Component | ESP32 Pin | Status |
+| --- | --- | --- |
+| Servo 1 (active in firmware) | GPIO 10 | Used in current code |
+| Servo 2 (optional expansion) | GPIO 19 | Reserved/example |
+| Motor IN1 | GPIO 5 | Used in current code |
+| Motor IN2 | GPIO 4 | Used in current code |
+| ENA (PWM, optional speed control) | GPIO 9 | Optional wiring |
+
+NOTE: Verify pins with your actual hardware and firmware before final wiring.
 
 ---
 
-## Key Features
-- Automated pill sorting based on schedule  
-- Machine learning-based pill recognition via mobile camera  
-- Bluetooth communication between mobile device and hardware  
-- Precise control using SG90 servo motors for accurate dispensing  
-- Weekly medication organization (by days of the week)  
-- Designed for ease of use by elderly users  
+## Wiring Overview
+
+### Motor Driver (L298N)
+- IN1 -> ESP32 GPIO 5
+- IN2 -> ESP32 GPIO 4
+- Motor terminals -> DC Motor
+- VCC -> External power supply (for example 9V)
+- GND -> Common ground with ESP32
+
+### Servos (SG90)
+- Servo 1 signal -> GPIO 10
+- VCC -> 5V
+- GND -> Common ground
+
+### ESP32 Power
+- Powered via USB or regulated 5V input
+
+IMPORTANT: All grounds must be connected together.
+
+---
+
+## Power Considerations
+- Do not power motors directly from ESP32.
+- Use external supply for motor driver.
+- Servos may require a stable 5V supply.
+- Ensure common ground between all components.
+
+---
+
+## Firmware Setup
+
+### Requirements
+- Arduino IDE
+- ESP32 board package installed
+
+### Required Libraries (typical)
+- BLE library
+- Servo library (`ESP32Servo`)
+
+### Steps
+1. Open `ESP32_Motor/ESP32_Motor.ino`.
+2. Select board: ESP32-S3.
+3. Install required libraries.
+4. Connect ESP32 via USB.
+5. Upload code.
+
+---
+
+## Firmware Structure
+- `ESP32_Motor/ESP32_Motor.ino` -> Main entry point
+- `ESP32_Motor/ble.cpp` -> BLE communication handling
+- `ESP32_Motor/servo.cpp` -> Servo positioning control
+- `ESP32_Motor/motor.cpp` -> DC motor control
+
+---
+
+## Operation Flow
+1. User scans pill via mobile app.
+2. App sends command via BLE.
+3. ESP32 receives signal.
+4. Servo aligns the correct compartment.
+5. Motor activates to dispense pill.
+6. System resets and waits for the next command.
 
 ---
 
@@ -57,37 +134,34 @@ After arm positioning, the motor runs to transport the pill to the designated co
 ---
 
 ## Process Summary
-The Smart Pill Dispenser follows a streamlined workflow: **Scanner → Schedule → Transmit → Position Arm → Transport Pill**. Users first scan pills using the mobile application, then schedule them for specific days of the week. The classified data is sent to the ESP32-S3, which first positions the servo arm at the correct compartment, followed by motor activation to transport the pill to its designated location.
+The Smart Pill Dispenser follows this workflow: **Scanner -> Schedule -> Transmit -> Position Arm -> Transport Pill**.
 
 ---
 
-## System Architecture
-- Mobile Application
-  - Camera input + Machine Learning model  
-  - User interface for scheduling  
-  - Bluetooth communication  
+## Calibration Guide
 
-- Embedded System (ESP32-S3)
-  - Receives classification data  
-  - Controls TT motor via L298N driver  
-  - Controls SG90 servos  
-  - Executes dispensing logic  
+### Servo Calibration
+Adjust servo angles in code for:
+- Closed/home position
+- Open/dispense position
 
-- Mechanical System
-  - Conveyor belt  
-  - TT DC gear motor  
-  - Servo-driven arms  
-  - Compartment tray  
+### Motor Timing
+Tune delay values to control:
+- Dispense duration
+- Over-rotation prevention
+
+### Alignment
+Ensure servo positions align with physical compartments accurately.
 
 ---
 
 ## Use Case
-Designed for elderly individuals who need assistance managing daily medication. The system minimizes human error and simplifies the process of organizing pills.
+Designed for elderly individuals who need assistance managing daily medication. The system minimizes human error and simplifies medication organization.
 
 ---
 
 ## Future Improvements
-- Voice assistant integration  
-- Reminder notifications  
-- IoT cloud synchronization  
-- Health monitoring integration  
+- Voice assistant integration
+- Reminder notifications
+- IoT cloud synchronization
+- Health monitoring integration
