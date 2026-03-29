@@ -39,29 +39,25 @@ The system consists of a conveyor mechanism powered by a TT DC geared motor and 
 
 ## Working Principle
 
-### Step 1: Pill Recognition
-The user uses a mobile application equipped with a camera and integrated machine learning model to scan pills. The system identifies each pill individually (one pill at a time).
+### Step 1: Scanner
+The user uses a mobile application with camera and machine learning to scan and classify pills. The system identifies each pill individually.
 
-### Step 2: Classification
-The mobile application classifies pills according to a predefined schedule (e.g., days of the week).
+### Step 2: Scheduling and Classification
+After scanning, the application allows the user to schedule which day of the week to take the pills and completes the classification process.
 
 ### Step 3: Data Transmission
-After recognition, the mobile device sends the pill classification data to the ESP32-S3 via Bluetooth.
+The application sends the classified data to the ESP32-S3 microcontroller via Bluetooth.
 
-### Step 4: System Activation
-Upon receiving the data:
-- The ESP32-S3 activates the conveyor system via the L298N motor driver  
-- Controls the timing and movement of the SG90 servo-driven arms  
+### Step 4: Arm Positioning
+The ESP32-S3 rotates the servo arm to the correct box position corresponding to the scheduled day.
 
-### Step 5: Dispensing Process
-- The user places pills onto the conveyor belt  
-- The conveyor transports pills to sorting positions  
-- Based on received data, the ESP32-S3 selects the correct servo arm  
-- Each SG90 servo rotates to a specific angle  
-- Pills slide along the arm and fall into the correct compartment  
+### Step 5: Pill Transport
+After arm positioning, the motor runs to transport the pill to the designated compartment.
 
-### Step 6: Storage
-Pills are sorted into designated compartments corresponding to the scheduled days.
+---
+
+## Process Summary
+The Smart Pill Dispenser follows a streamlined workflow: **Scanner → Schedule → Transmit → Position Arm → Transport Pill**. Users first scan pills using the mobile application, then schedule them for specific days of the week. The classified data is sent to the ESP32-S3, which first positions the servo arm at the correct compartment, followed by motor activation to transport the pill to its designated location.
 
 ---
 
