@@ -1,8 +1,8 @@
 ﻿# Happy Granny
 
 ## Overview
-This project is a hardware-based pill dispensing system built with an ESP32-S3 microcontroller. The system integrates Bluetooth communication, servo motors, and a DC motor to automate pill dispensing after scanning through a mobile application.
-It is specifically designed for elderly users to support safer and more reliable daily medication management.
+Happy Granny is your friendly medication buddy built for older adults who deserve simple routines, fewer worries, and more smiles. Instead of juggling pill boxes and guessing "Did I already take this?", users can quickly scan, schedule, and let the system handle the rest.
+The goal is comfort, confidence, and consistency, so daily medication feels less like a chore and more like "Grandma-level organized".
 
 Original concept preserved:
 - Scan pill using mobile app
