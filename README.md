@@ -155,8 +155,17 @@ Ensure servo positions align with physical compartments accurately.
 
 ---
 
-## Use Case
-Designed for elderly individuals who need assistance managing daily medication. The system minimizes human error and simplifies medication organization.
+
+
+---
+
+## Team Members
+
+| Team Member | Role | Main Contribution |
+| --- | --- | --- |
+| Tasawar-Sanjar Rahman | Computer Vision and ML Engineer | Focused on scanner app integration and machine learning-based pill classification. |
+| Thien Phong Dong | Embedded Systems and Electronics Engineer | Focused on BLE communication, motor and servo control, and electrical system integration. |
+| Nhan Tran | Mechanical Design and Prototyping Engineer | Focused on DIY fabrication and mechanical design details of the product. |
 
 ---
 
